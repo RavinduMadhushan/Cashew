@@ -1,0 +1,6 @@
+{
+  "https-port": 3010,
+  "http-port": 3011,
+  "db-url": "mongodb+srv://oqtavelabs:reactangular@cluster0-euzgp.gcp.mongodb.net/test",
+  "db-name": "oqtave-prosports"
+}
