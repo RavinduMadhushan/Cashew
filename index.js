@@ -17,17 +17,16 @@ const mongoose = require("mongoose");
 const https = require("https");
 const fs = require("fs");
 
-
-const https_port = 3010;
-const http_port = 3011;
+const https_port = 5001;
+const http_port = 5001;
 
 const db_name = "Cashew";
 const environment = process.env.environment || "dev";
 
 app.use(compression());
 app.use(express.static("logs"));
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb' ,extended: true }));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.static("uploads"));
 app.use(cors());
 
@@ -38,8 +37,8 @@ const accessLogStream = fs.createWriteStream("./logs/outfit.log", {
 app.use(morgan("common", { stream: accessLogStream }));
 app.use(morgan("dev"));
 app.use("/api/user", users);
-app.use("/api/product", product);
-app.use("/api/purchase", purchase);
+app.use("/api/products", product);
+app.use("/api/purchases", purchase);
 app.use("/api/auth", auth);
 app.use("/api/supplier", suppliers);
 

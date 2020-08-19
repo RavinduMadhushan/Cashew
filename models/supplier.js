@@ -4,41 +4,41 @@ const supplierSchema = new mongoose.Schema({
   supplierCode: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   supplierName: {
     type: String,
-    required: true
+    required: true,
   },
   supplierDescription: {
-    type: String
+    type: String,
   },
   supplierAddress: {
     type: String,
-    required: true
+    required: true,
   },
   supplierNumber: {
-    type: Number,
-    required: true
+    type: String,
+    required: true,
   },
   approvalStatus: {
     type: String,
-    required: true
+    required: true,
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
   },
   createdAt: {
-    type: Number
+    type: Number,
   },
   lastModifiedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
   },
   lastModifiedAt: {
-    type: Number
-  }
+    type: Number,
+  },
 });
 
 const Supplier = mongoose.model("Supplier", supplierSchema);

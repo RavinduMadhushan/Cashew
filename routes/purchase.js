@@ -3,40 +3,37 @@ const express = require("express");
 const router = express.Router();
 const _ = require("lodash");
 
-
 router.post("/new", async (req, res) => {
-  //   console.log(req.body);
-//   let supplier = await Purchase.findOne({
-//     $and: [{ supplierCode: req.body.suppliercode }]
-//   });
+  console.log(req.body);
 
-//   if (supplier) {
-//     return res
-//       .status(200)
-//       .send({ error: true, messege: "Already have a Supllier Name" });
-//   }
+  let date = new Date();
+  date.setHours(0, 0, 0, 0);
 
-  let new_supplier = new Purchase({
-   supplier: req.body.supplier,
+  let purchase = new Purchase({
+    purchaseCode: req.body.purchaseCode,
+    lot: req.body.lotno,
+    supplier: req.body.supplier,
     cost: req.body.cost,
     quantity: req.body.quantity,
-    purchasedate: req.body.purchasedate,
+    purchasedate: date.getTime(),
     product: req.body.product,
+    moisture: req.body.moisture,
     approvalStatus: "Pending",
     createdBy: req.body._id,
     createdAt: Date.now(),
     lastModifiedBy: req.body._id,
-    lastModifiedAt: Date.now()
+    lastModifiedAt: Date.now(),
   });
 
-  await new_supplier.save();
-  //   console.log(req);
+  await purchase.save();
 
   res.status(200).send({ error: false, success: true });
 });
 
-router.get("/getAll", async (req, res) => {
-  let result = await SupPurchaseplier.find({})
+router.post("/getAll", async (req, res) => {
+  let result = await Purchase.find({})
+    .populate("product")
+    .populate("supplier")
     .populate("createdBy")
     .populate("lastModifiedBy");
 

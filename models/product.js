@@ -2,33 +2,32 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-descrption: 
-    {
-     type: String,
-    required: true
-    },
-  code: {
-  type: String,
-    required: true
+  productCode: {
+    type: String,
+    required: true,
+  },
+  productDescription: {
+    type: String,
+    required: true,
   },
   approvalStatus: {
     type: String,
-    required: true
+    required: true,
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
   },
   createdAt: {
-    type: Number
+    type: Number,
   },
   lastModifiedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
   },
   lastModifiedAt: {
-    type: Number
-  }
+    type: Number,
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);

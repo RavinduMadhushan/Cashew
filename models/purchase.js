@@ -2,48 +2,58 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 
 const purchaseSchema = new mongoose.Schema({
-  supplier: 
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Supplier",
-      required: true
-    },
+  purchaseCode: {
+    type: String,
+    required: true,
+  },
+  lot: {
+    type: String,
+    required: true,
+  },
+  supplier: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Supplier",
+    required: true,
+  },
   cost: {
     type: Number,
-    required: true
-     },
+    required: true,
+  },
   quantity: {
     type: Number,
-    required: true
+    required: true,
+  },
+  moisture: {
+    type: Number,
+    required: true,
   },
   purchasedate: {
     type: Number,
-    required: true
-    },
+    required: true,
+  },
   product: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Product"
+    ref: "Product",
   },
-
   approvalStatus: {
     type: String,
-      required: true,
-        required: true
+    required: true,
+    required: true,
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
   },
   createdAt: {
-    type: Number
+    type: Number,
   },
   lastModifiedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
   },
   lastModifiedAt: {
-    type: Number
-  }
+    type: Number,
+  },
 });
 
 const Purchase = mongoose.model("Purchase", purchaseSchema);

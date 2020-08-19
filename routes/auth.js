@@ -7,8 +7,6 @@ const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 
-
-
 router.post("/login", async (req, res) => {
   const { error } = validate(req.body);
 
@@ -28,13 +26,12 @@ router.post("/login", async (req, res) => {
     return res.status(400).send("Invalid email or password.");
   }
 
-
   const token = jwt.sign(
     {
       _id: user._id,
       name: user.name,
       email: user.email,
-      type: user.type
+      type: user.type,
     },
     "boardinglk",
     { expiresIn: 60 * 60 * 24 }
@@ -44,22 +41,11 @@ router.post("/login", async (req, res) => {
 
 function validate(req) {
   const schema = {
-    email: Joi.string()
-      .min(5)
-      .max(555)
-      .required()
-      .email(),
-    password: Joi.string()
-      .min(5)
-      .max(1000)
-      .required()
+    email: Joi.string().min(5).max(555).required().email(),
+    password: Joi.string().min(5).max(1000).required(),
   };
 
-  return Joi.validate(req, schema);
+  return Joi.object(schema).validate(req);
 }
-
-
-
-
 
 module.exports = router;
