@@ -6,11 +6,15 @@ const cors = require("cors");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+
 const users = require("./routes/users");
 const auth = require("./routes/auth");
 const suppliers = require("./routes/suppliers");
 const product = require("./routes/product");
 const purchase = require("./routes/purchase");
+const purchaseInspection = require("./routes/purchaseInspection");
+const arrivals = require("./routes/arrival");
+
 const multer = require("multer");
 const mongoose = require("mongoose");
 
@@ -41,6 +45,8 @@ app.use("/api/products", product);
 app.use("/api/purchases", purchase);
 app.use("/api/auth", auth);
 app.use("/api/supplier", suppliers);
+app.use("/api/purchaseInspection", purchaseInspection);
+app.use("/api/arrivals", arrivals);
 
 const uri =
   "mongodb+srv://oqtavelabs:reactangular@cluster0-euzgp.gcp.mongodb.net/test";

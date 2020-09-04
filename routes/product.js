@@ -27,4 +27,10 @@ router.post("/getAll", async (req, res) => {
   res.status(200).send({ error: false, data: result });
 });
 
+router.post("/update", async (req, res) => {
+  let result = await Product.findByIdAndUpdate(req.body.id,{...req.body.entity,lastModifiedBy : req.body._id, lastModifiedAt : Date.now()});
+
+  res.status(200).send({ error: false, data: result });
+});
+
 module.exports = router;

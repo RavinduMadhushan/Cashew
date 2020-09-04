@@ -1,39 +1,79 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const purchaseSchema = new mongoose.Schema({
-  purchaseCode: {
-    type: String,
-    required: true,
-  },
-  lot: {
-    type: String,
-    required: true,
-  },
-  supplier: {
+const purchaseInspectionSchema = new mongoose.Schema({
+  purchase: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Supplier",
+    ref: "Purchase",
     required: true,
   },
-  cost: {
+  sampleRawNutQty: {
     type: Number,
     required: true,
   },
-  quantity: {
+  inspectedQty: {
     type: Number,
     required: true,
   },
-  moisture: {
+  good: {
     type: Number,
     required: true,
   },
-  purchasedate: {
+  spotted: {
     type: Number,
     required: true,
   },
-  purchaseInspection: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "PurchaseInspection",
+  preMature: {
+    type: Number,
+    required: true,
+  },
+  rotten: {
+    type: Number,
+    required: true,
+  },
+  humidified: {
+    type: Number,
+    required: true,
+  },
+  sampleWeightwithshells: {
+    type: Number,
+    required: true,
+  },
+  healthyKernelsHusk: {
+    type: Number,
+    required: true,
+  },
+  acceptedKernels: {
+    type: Number,
+    required: true,
+  },
+  immaturePrickedkernelsShells: {
+    type: Number,
+    required: true,
+  },
+  rejectedKernelsShells: {
+    type: Number,
+    required: true,
+  },
+  moistureContent: {
+    type: Number,
+    required: true,
+  },
+  graining: {
+    type: Number,
+    required: true,
+  },
+  defectRate: {
+    type: Number,
+    required: true,
+  },
+  kor: {
+    type: Number,
+    required: true,
+  },
+  ra: {
+    type: Number,
+    required: true,
   },
   approvalStatus: {
     type: String,
@@ -56,7 +96,10 @@ const purchaseSchema = new mongoose.Schema({
   },
 });
 
-const Purchase = mongoose.model("Purchase", purchaseSchema);
+const PurchaseInspection = mongoose.model(
+  "PurchaseInspection",
+  purchaseInspectionSchema
+);
 
 // function validateUser(user) {
 //   const schema = {
@@ -84,5 +127,5 @@ const Purchase = mongoose.model("Purchase", purchaseSchema);
 //   return Joi.validate(user, schema);
 // }
 
-exports.Purchase = Purchase;
+exports.PurchaseInspection = PurchaseInspection;
 // exports.validate = validateUser;

@@ -1,21 +1,16 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const purchaseSchema = new mongoose.Schema({
-  purchaseCode: {
-    type: String,
-    required: true,
-  },
-  lot: {
-    type: String,
-    required: true,
-  },
-  supplier: {
+const arrivalSchema = new mongoose.Schema({
+  purchase: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Supplier",
+    ref: "Purchase",
+  },
+  arrivalDate: {
+    type: Number,
     required: true,
   },
-  cost: {
+  arrivalTime: {
     type: Number,
     required: true,
   },
@@ -23,21 +18,8 @@ const purchaseSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  moisture: {
-    type: Number,
-    required: true,
-  },
-  purchasedate: {
-    type: Number,
-    required: true,
-  },
-  purchaseInspection: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "PurchaseInspection",
-  },
   approvalStatus: {
     type: String,
-    required: true,
     required: true,
   },
   createdBy: {
@@ -56,7 +38,7 @@ const purchaseSchema = new mongoose.Schema({
   },
 });
 
-const Purchase = mongoose.model("Purchase", purchaseSchema);
+const Arrival = mongoose.model("Arrival", arrivalSchema);
 
 // function validateUser(user) {
 //   const schema = {
@@ -84,5 +66,5 @@ const Purchase = mongoose.model("Purchase", purchaseSchema);
 //   return Joi.validate(user, schema);
 // }
 
-exports.Purchase = Purchase;
+exports.Arrival = Arrival;
 // exports.validate = validateUser;
