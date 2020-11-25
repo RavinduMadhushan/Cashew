@@ -23,17 +23,9 @@ const purchaseSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  moisture: {
-    type: Number,
-    required: true,
-  },
   purchasedate: {
     type: Number,
     required: true,
-  },
-  purchaseInspection: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "PurchaseInspection",
   },
   approvalStatus: {
     type: String,
@@ -58,31 +50,4 @@ const purchaseSchema = new mongoose.Schema({
 
 const Purchase = mongoose.model("Purchase", purchaseSchema);
 
-// function validateUser(user) {
-//   const schema = {
-//     name: Joi.string()
-//       .min(5)
-//       .max(50)
-//       .required(),
-//     type: Joi.string(),
-//     email: Joi.string()
-//       .min(5)
-//       .max(255)
-//       .required()
-//       .email(),
-//     password: Joi.string()
-//       .min(5)
-//       .max(1000)
-//       .required(),
-//     confirmpassword: Joi.string()
-//       .min(5)
-//       .max(1000)
-//       .required(),
-//     _id: Joi.string()
-//   };
-
-//   return Joi.validate(user, schema);
-// }
-
 exports.Purchase = Purchase;
-// exports.validate = validateUser;

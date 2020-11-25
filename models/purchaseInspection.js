@@ -2,9 +2,9 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 
 const purchaseInspectionSchema = new mongoose.Schema({
-  purchase: {
+  batch: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Purchase",
+    ref: "Batch",
     required: true,
   },
   sampleRawNutQty: {

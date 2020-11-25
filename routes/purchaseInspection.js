@@ -3,10 +3,11 @@ const { PurchaseInspection } = require("../models/purchaseInspection");
 const express = require("express");
 const router = express.Router();
 const _ = require("lodash");
+const { Batch } = require("../models/batch");
 
 router.post("/new", async (req, res) => {
   let purchaseInspection = new PurchaseInspection({
-    purchase: req.body.purchase,
+    batch: req.body.batch,
     sampleRawNutQty: req.body.sampleRawNutQty,
     inspectedQty: req.body.inspectedQty,
     good: req.body.good,
@@ -34,7 +35,7 @@ router.post("/new", async (req, res) => {
 
   await purchaseInspection.save();
 
-  let purchase = await Purchase.findByIdAndUpdate(req.body.purchase, {
+  let batch = await Batch.findByIdAndUpdate(req.body.batch, {
     purchaseInspection: purchaseInspection._id,
   });
 

@@ -14,6 +14,8 @@ const product = require("./routes/product");
 const purchase = require("./routes/purchase");
 const purchaseInspection = require("./routes/purchaseInspection");
 const arrivals = require("./routes/arrival");
+const batch = require("./routes/batch");
+const packing = require("./routes/packing");
 
 const multer = require("multer");
 const mongoose = require("mongoose");
@@ -47,6 +49,8 @@ app.use("/api/auth", auth);
 app.use("/api/supplier", suppliers);
 app.use("/api/purchaseInspection", purchaseInspection);
 app.use("/api/arrivals", arrivals);
+app.use("/api/batch", batch);
+app.use("/api/packing", packing);
 
 const uri =
   "mongodb+srv://oqtavelabs:reactangular@cluster0-euzgp.gcp.mongodb.net/test";
